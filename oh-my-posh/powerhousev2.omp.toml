@@ -1,0 +1,142 @@
+version = 3
+final_space = true
+[palette]
+  rosewater = "#F4DBD6"
+  flamingo = "#F0C6C6"
+  blue = "#8AADF4"
+  red = "#ED8796"
+  green = "#A6DA95"
+  mauve = "#C6A0F6"
+  yellow = "#EED49F"
+  sky = "#91D7E3"
+  sapphire = "#7DC4E4"
+  lavender = "#B7BDF8"
+  text = "#CAD3F5"
+  base = "#24273A"
+  pink = "#F5BDE6"
+  maroon = "#EE99A0"
+  peach = "#F5A97F"
+  teal = "#8bd5ca"
+  overlay0 = "#6E738D"
+  surface0 = "#363A4F"
+  mantle = "#1e2030"
+  crust = "#181926"
+
+[upgrade]
+  source = "cdn"
+  interval = "168h"
+  auto = false
+  notice = false
+
+[[blocks]]
+  type = "prompt"
+  alignment = "left"
+  
+  [[blocks.segments]]
+    type = "text"
+    foreground = "p:mantle"
+    background = "p:blue"
+    background_templates = [
+      "{{if .WSL }}p:peach{{end}}"
+    ]
+    style = "powerline"
+    leading_powerline_symbol=""
+    powerline_symbol = ""
+    template = "{{.Shell}}"
+
+  [[blocks.segments]]
+    type = "session"
+    foreground = "p:base"
+    background = "p:rosewater"
+    style = "powerline"
+    powerline_symbol = ""
+    template = "{{if .SSHSession}}  {{.UserName}}@{{.HostName}} {{end}}"
+    
+  [[blocks.segments]]
+    type = "python"
+    style = "powerline"
+    powerline_symbol = ""
+    foreground = "p:mantle"
+    background = "p:teal"
+    template = "  {{.Major}}.{{.Minor}} "
+    
+  [[blocks.segments]]
+    template = " {{ .Path }} "
+    foreground = "p:text"
+    background = "p:surface0"
+    type = "path"
+    style ="powerline"
+    powerline_symbol = ""
+
+    [blocks.segments.properties]
+      style = "agnoster_full"
+      folder_separator_icon = "/"
+      home_icon = " "
+    
+    [blocks.segments.properties.mapped_locations]
+      # Windows
+      "C:\\*" = "C"
+      "D:\\*" = "D"
+      "D:\\Work\\02_Projects\\01_Business" = " Business"
+      "D:\\Work\\02_Projects\\02_Playground" = " Playground"
+      "D:\\Work\\02_Projects\\03_DEM" = " DEM"
+      "D:\\Work\\02_Projects\\04_College" = " College"
+
+      # Linux
+      "/mnt/c/" = "C"
+      "/mnt/d/" = "D"
+      "~/Projects/01_Business" = " Business"
+      "~/Projects/02_Playground" = " Playground"
+      "~/Projects/03_DEM" = " DEM"
+      "~/Projects/04_College" = " College"
+
+  [[blocks.segments]]
+    template = " {{ .HEAD }} "
+    foreground = "p:base"
+    background = "p:yellow"
+    type = "git"
+    style = "powerline"
+    powerline_symbol = ""
+
+    [blocks.segments.properties]
+      
+      [blocks.segments.properties.mapped_branches]
+        "feature/*" = "󱓞 "
+        
+  [[blocks.segments]]
+    type = "executiontime"
+    alias = "Ext"
+    style = "powerline"
+    powerline_symbol = ""
+    template = " {{ .FormattedMs }} "
+    foreground = "p:base"
+    background = "p:mauve"
+
+    [blocks.segments.properties]
+      threshold = 500
+      
+  [[blocks.segments]]
+    template = "{{if .Code}}  {{.Code}} {{else}}  {{end}}"
+    foreground_templates = [
+      "{{if .Error}}p:red{{end}}"
+    ]
+    background = "p:mantle"
+    foreground = "p:green"
+    type = "status"
+    style = "diamond"
+    trailing_diamond = ""
+
+    [blocks.segments.properties]
+      always_enabled = true
+
+    
+[[blocks]]
+  type = "prompt"
+  alignment = "left"
+  newline = true
+
+  [[blocks.segments]]
+    template = " "
+    foreground = "p:sky"
+    type = "text"
+    style = "plain"
