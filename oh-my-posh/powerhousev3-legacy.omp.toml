@@ -1,0 +1,100 @@
+version = 3
+final_space = true
+[palette]
+  rosewater = "#F4DBD6"
+  flamingo = "#F0C6C6"
+  blue = "#8AADF4"
+  red = "#ED8796"
+  green = "#A6DA95"
+  mauve = "#C6A0F6"
+  yellow = "#EED49F"
+  sky = "#91D7E3"
+  sapphire = "#7DC4E4"
+  lavender = "#B7BDF8"
+  text = "#CAD3F5"
+  base = "#24273A"
+  pink = "#F5BDE6"
+  maroon = "#EE99A0"
+  peach = "#F5A97F"
+  teal = "#8bd5ca"
+  overlay0 = "#6E738D"
+  surface0 = "#363A4F"
+  mantle = "#1e2030"
+  crust = "#181926"
+
+[[blocks]]
+  type = "prompt"
+  alignment = "left"
+  
+  [[blocks.segments]]
+    type = "text"
+    style = "plain"
+    foreground = "p:blue"
+    template = "\n({{.Shell}})"
+
+  [[blocks.segments]]
+    type = "session"
+    foreground = "p:rosewater"
+    style = "plain"
+    template = "{{.UserName}}@{{.HostName}}"
+    
+  [[blocks.segments]]
+    template = "::({{ .HEAD }})"
+    type = "git"
+    foreground = "p:yellow"
+    style = "plain"
+
+    [blocks.segments.properties]
+      branch_icon = ""   
+
+  [[blocks.segments]]
+    type = "python"
+    style = "plain"
+    foreground = "p:teal"
+    template = "(venv)"
+
+  [[blocks.segments]]
+    template = " {{if .Code}}x{{.Code}}{{end}}"
+    foreground = "p:red"
+    type = "status"
+    style = "plain"  
+
+  [[blocks.segments]]
+    type = "executiontime"
+    alias = "Ext"
+    template = " ext-{{.FormattedMs}}"
+    foreground = "p:sky"
+    style = "plain"
+
+    [blocks.segments.properties]
+      threshold = 500
+      style="dallas"
+          
+[[blocks]]
+  type = "prompt"
+  alignment = "left"
+  newline = true
+
+  [[blocks.segments]]
+    template = "~[{{ .Path }}]"
+    foreground = "p:blue"
+    type = "path"
+    style="plain"
+
+    [blocks.segments.properties]
+      style = "agnoster_full"
+      folder_separator_icon = "/"
+      home_icon = "home"
+      hide_root_location=true
+ 
+[[blocks]]
+  type = "prompt"
+  alignment = "left"
+  newline = true
+
+  [[blocks.segments]]
+    template = "$"
+    foreground = "p:sky"
+    type = "text"
+    style = "plain"
+

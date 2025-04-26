@@ -34,6 +34,12 @@ final_space = true
   
   [[blocks.segments]]
     type = "text"
+    foreground = "p:blue"
+    style = "plain"
+    template = "\n"
+
+  [[blocks.segments]]
+    type = "text"
     foreground = "p:mantle"
     background = "p:blue"
     style = "diamond"
@@ -86,7 +92,7 @@ final_space = true
   [[blocks.segments]]
     type = "executiontime"
     alias = "Ext"
-    template = "ext {{.FormattedMs}}"
+    template = " ext {{.FormattedMs}}"
     foreground = "p:sky"
     style = "plain"
 
@@ -101,7 +107,7 @@ final_space = true
 
   [[blocks.segments]]
     template = "└[{{ .Path }}]"
-    foreground = "p:lavender"
+    foreground = "p:blue"
     type = "path"
     style="plain"
 
